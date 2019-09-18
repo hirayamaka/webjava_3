@@ -1,0 +1,65 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+		<title>ポケモン一覧</title>
+	</head>
+	<body>
+		<h1>ポケモン一覧</h1>
+		<form action="#" th:action="@{/pokemonlist}" th:object="${PokemonListForm}" method="post">
+
+			<table class="table-sm table-striped table-hover" >
+				<thead  class="thead-light">
+				<tr>
+					<th>ポケモンID</th>
+					<th>名前</th>
+					<th>CP</th>
+					<th>削除</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="pokemon, stat : ${pokemons}">
+					<td>
+						<span th:text="${pokemon.pokemonId}"></span>
+						<input type="hidden" th:name="|pokemonList[${stat.index}].pokemonId|" th:value="${pokemon.pokemonId}" />
+					</td>
+					<td>
+						<input type="text" th:name="|pokemonList[${stat.index}].pokemonName|" th:value="${pokemon.pokemonName}" />
+					</td>
+					<td>
+						<input type="text" th:name="|pokemonList[${stat.index}].cp|" th:value="${pokemon.cp}" />
+					</td>
+					<td>
+						<a href="" th:href="@{/deletepokemon(pokemon_id=${pokemon.pokemonId})}" >削除</a>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<input type="submit" value="更新" class="btn" />
+		</form>
+		<form action="#" th:action="@{/addpokemon}" method="post">
+			<table>
+				<tr>
+					<th>ポケモンID</th>
+					<th>名前</th>
+					<th>CP</th>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="pokemonId" />
+					</td>
+					<td>
+						<input type="text" name="pokemonName" />
+					</td>
+					<td>
+						<input type="text" name="cp" />
+					</td>
+				</tr>
+			</table>
+
+			<input type="submit" value="登録" class="btn" />
+		</form>
+	</body>
+</html>
