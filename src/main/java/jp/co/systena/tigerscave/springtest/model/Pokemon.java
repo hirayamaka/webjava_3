@@ -43,7 +43,7 @@ public class Pokemon {
     this.level = level;
   }
 
-  //ポケモン取得時間のアクセッサ
+  //ポケモン取得時間のアクセッサ！
   /*public Timestamp getPokemonGettime() {
     return pokemonGettime;
   }
