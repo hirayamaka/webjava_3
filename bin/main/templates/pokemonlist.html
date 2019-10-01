@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
-		<title>ポケモン一覧</title>
+		<title>ポケモンボックス一覧</title>
 	</head>
 	<body>
 		<h1>ポケモン一覧</h1>
@@ -13,10 +13,10 @@
 			<table class="table-sm table-striped table-hover" >
 				<thead  class="thead-light">
 				<tr>
-					<th>ポケモンID</th>
+					<th>ID</th>
 					<th>名前</th>
-					<th>CP</th>
-					<th>削除</th>
+					<th>レベル</th>
+					<th>手持ちから逃がす</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -29,10 +29,10 @@
 						<input type="text" th:name="|pokemonList[${stat.index}].pokemonName|" th:value="${pokemon.pokemonName}" />
 					</td>
 					<td>
-						<input type="text" th:name="|pokemonList[${stat.index}].cp|" th:value="${pokemon.cp}" />
+						<input type="text" th:name="|pokemonList[${stat.index}].level|" th:value="${pokemon.level}" />
 					</td>
 					<td>
-						<a href="" th:href="@{/deletepokemon(pokemon_id=${pokemon.pokemonId})}" >削除</a>
+						<a href="" th:href="@{/deletepokemon(pokemon_id=${pokemon.pokemonId})}" >手持ちから逃がす</a>
 					</td>
 				</tr>
 				</tbody>
@@ -42,9 +42,9 @@
 		<form action="#" th:action="@{/addpokemon}" method="post">
 			<table>
 				<tr>
-					<th>ポケモンID</th>
+					<th>ID</th>
 					<th>名前</th>
-					<th>CP</th>
+					<th>レベル</th>
 				</tr>
 				<tr>
 					<td>
@@ -54,12 +54,12 @@
 						<input type="text" name="pokemonName" />
 					</td>
 					<td>
-						<input type="text" name="cp" />
+						<input type="text" name="level" />
 					</td>
 				</tr>
 			</table>
 
-			<input type="submit" value="登録" class="btn" />
+			<input type="submit" value="捕まえる" class="btn" />
 		</form>
 	</body>
 </html>

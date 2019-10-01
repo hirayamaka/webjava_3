@@ -88,9 +88,9 @@ public class PokemonListController {
           //item_idをキーに名称と価格を更新する
           //SQL文字列中の「?」の部分に、後ろで指定した変数が埋め込まれる
           int updateCount = jdbcTemplate.update(
-              "UPDATE pokemons SET pokemon_name = ?, cp = ? WHERE pokemon_id = ?",
+              "UPDATE pokemons SET pokemon_name = ?, level = ? WHERE pokemon_id = ?",
               pokemon.getPokemonName(),
-              Integer.parseInt(pokemon.getCp()),
+              Integer.parseInt(pokemon.getLevel()),
               Integer.parseInt(pokemon.getPokemonId()));
         }
       }
@@ -149,7 +149,7 @@ public class PokemonListController {
                 "INSERT INTO pokemons VALUES( ?, ?, ? )",
                 Integer.parseInt(form.getPokemonId()),
                 form.getPokemonName(),
-                Integer.parseInt(form.getCp())
+                Integer.parseInt(form.getLevel())
               );
 
     }
